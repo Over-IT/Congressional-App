@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
+
+:root {
+    --base: #cdf5b4;
+    --dim: hsl(from var(--base) h s calc(l*0.5));
+    --border: hsl(from var(--base) h s calc(l*0.2));
+    --invert-base: rgb(from var(--base) calc(255 - r) calc(255 - g) calc(255 - b));
+    --font: var(--invert-base);
+
+    --test-color-1: #1e3a8a;
+    --test-color-2: #f0f3ff;
+    --test-color-3: #dbeafe;
+    --test-color-4: #2563eb;
+    --test-color-5: #0f172a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--test-color-2);
+    font-family: 'Lexend', sans-serif;
+    color: var(--test-color-5);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.boldText {
+    font-weight: bold;
+}
+
+/* Titlebar */
+#titleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--test-color-1);
+    height: 70px;
+    padding: 0 24px;
+    border-bottom: 3px solid var(--test-color-4);
+    color: #ffffff;
+}
+
+#titleContentLeft, #titleContentRight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#titleContentLeft img {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+}
+
+.titleText {
+    font-size: 1.25rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.navLabel {
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.actionBtn {
+    background-color: var(--test-color-4);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.secondaryBtn {
+    background: transparent;
+    border: 1px solid var(--test-color-4);
+    color: var(--test-color-5);
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+/* Drag Panel */
+#panel {
+    position: absolute;
+    top: 85px;
+    left: 15px;
+    width: 250px;
+    background-color: var(--base);
+    font-family: 'Lexend', sans-serif;
+    color: var(--font);
+    user-select: none;
+    transition: left 0.3s ease, top 0.3s ease;
+    border: 4px solid var(--border);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#panelHead {
+    background-color: var(--dim);
+    color: #ffffff;
+    padding: 8px;
+    font-weight: bold;
+    cursor: grab;
+}
+
+#panelBody {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panelControls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.panelControls input[type="color"] {
+    border: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    background: none;
+}
+
+.panelControls select, .panelControls button {
+    padding: 4px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+}
+
+.panelControls button {
+    background-color: var(--border);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#panel.dragging { transition: none; }
+#panel.dragging #panelHead { cursor: grabbing; }
+
+.recBox {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-left: 3px solid var(--border);
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    border-radius: 2px;
+}
+
+/* Inspector */
+.panelInspector {
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.inspectorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+#paletteList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.paletteRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    padding: 2px 4px;
+}
+
+.swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+}
+
+.roleLabel { font-weight: bold; }
+.descLabel { font-size: 0.65rem; font-weight: normal; opacity: 0.8; }
+.valLabel { margin-left: auto; font-family: monospace; }
+
+/* Main Layout Structure */
+#mainContainer {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    min-height: calc(100vh - 70px);
+}
+
+#sideNav {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.navSection h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.95rem;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.navItem.active {
+    background-color: var(--test-color-4);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navItem img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.sidebarWidget {
+    background-color: var(--test-color-2);
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--test-color-4);
+}
+
+.sidebarWidget h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.9rem;
+}
+
+.sidebarWidget p {
+    margin: 0 0 10px 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+#contentArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.placeholderCard {
+    background-color: var(--test-color-3);
+    border: 2px solid var(--test-color-4);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.heroCard {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.heroImage {
+    width: 110px;
+    height: 110px;
+    background-color: var(--test-color-2);
+    border-radius: 6px;
+    border: 1px solid var(--test-color-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+#tooBig {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.heroText h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+}
+
+.heroText p {
+    margin: 0 0 14px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.heroBtnGroup {
+    display: flex;
+    gap: 10px;
+}
+
+.tabBar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--test-color-4);
+    padding-bottom: 8px;
+}
+
+.tabBtn {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--test-color-5);
+}
+
+.tabBtn.active {
+    background-color: var(--test-color-4);
+    color: #ffffff;
+}
+
+.articleSection h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.15rem;
+}
+
+.articleSection p {
+    margin: 0 0 12px 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.calloutQuote {
+    background-color: var(--test-color-2);
+    border-left: 4px solid var(--test-color-4);
+    padding: 10px 16px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+}
+
+.calloutQuote p {
+    margin: 0;
+}
+
+.sectionHeader h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.itemGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.gridCard {
+    background-color: var(--test-color-3);
+    border: 2px solid var(--test-color-4);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cardMedia {
+    background-color: var(--test-color-2);
+    border: 1px solid var(--test-color-4);
+    border-radius: 4px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardMedia img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.cardMeta h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+}
+
+.cardMeta p {
+    margin: 0 0 10px 0;
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.ctaBanner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ctaText h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+}
+
+.ctaText p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+#pageFooter {
+    text-align: center;
+    padding: 14px;
+    font-size: 0.8rem;
+}
+
+#pageFooter p {
+    margin: 0;
+}

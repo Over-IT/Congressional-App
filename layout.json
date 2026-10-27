@@ -1,0 +1,28 @@
+{
+    
+    "Outline": {
+        "App Theme": "Volunteer",
+        "Programming Language": "Python",
+        "Platform": "Web" ,
+        "Libraries": "Flask"
+    },
+
+    "Homepage": {
+        "Title": "Enter title here!"
+        
+    },
+
+    "Main Page": {
+
+    },
+    
+    "Updates Page": {
+
+    },
+
+    "About Page": {
+
+    }
+
+
+}

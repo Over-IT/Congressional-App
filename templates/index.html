@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://colorjs.io/dist/color.global.js"></script>
+    <title>SuperCoolApp</title>
+</head>
+<body>
+    {% include 'titlebar.html' %}
+
+    <div id="panel">
+        {% include 'editor.html' %}
+    </div>
+
+    <div id="mainContainer" data-color-var="--test-color-2">
+        <aside id="sideNav" class="placeholderCard" data-color-var="--test-color-3">
+            <div class="navSection">
+                <h4 data-color-var="--test-color-5">Theory Navigation</h4>
+                <div class="navItem active" data-color-var="--test-color-4">
+                    <img src="./static/assets/images/placeholder.png" alt="icon">
+                    <span>Overview</span>
+                </div>
+                <div class="navItem" data-color-var="--test-color-5">
+                    <img src="./static/assets/images/placeholder.png" alt="icon">
+                    <span>60-30-10 Rule</span>
+                </div>
+                <div class="navItem" data-color-var="--test-color-5">
+                    <img src="./static/assets/images/placeholder.png" alt="icon">
+                    <span>Psychology</span>
+                </div>
+                <div class="navItem" data-color-var="--test-color-5">
+                    <img src="./static/assets/images/placeholder.png" alt="icon">
+                    <span>Accessibility</span>
+                </div>
+            </div>
+
+            <div class="sidebarWidget" data-color-var="--test-color-2">
+                <h4 data-color-var="--test-color-5">Palette Proportions</h4>
+                <p data-color-var="--test-color-5">60% dominant canvas, 30% structural surfaces, and 10% high-impact accent buttons.</p>
+                <button class="actionBtn" data-color-var="--test-color-4">Learn More</button>
+            </div>
+
+            <div class="sidebarWidget" data-color-var="--test-color-2">
+                <h4 data-color-var="--test-color-5">WCAG 2.1 Guidelines</h4>
+                <p data-color-var="--test-color-5">Text mathematical contrast ratios must maintain a minimum 4.5:1 ratio for readability.</p>
+            </div>
+        </aside>
+
+        <main id="contentArea">
+            <!-- Article Header & Hero -->
+            <section class="placeholderCard heroCard" data-color-var="--test-color-3">
+                <div class="heroImage" data-color-var="--test-color-2">
+                    <img id="tooBig" src="./static/assets/images/placeholder.png" alt="Hero Illustration">
+                </div>
+                <div class="heroText">
+                    <h2 data-color-var="--test-color-5">Color Theory & Mathematical Harmony in Web Design</h2>
+                    <p data-color-var="--test-color-5">Understanding how color formulas work in the HSL space helps designers generate cohesive, accessible interfaces that guide user focus seamlessly.</p>
+                    <div class="heroBtnGroup">
+                        <button class="actionBtn" data-color-var="--test-color-4">Read Guide</button>
+                        <button class="secondaryBtn" data-color-var="--test-color-5">View Schemes</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Content Tabs & Paragraphs -->
+            <section class="placeholderCard articleSection" data-color-var="--test-color-3">
+                <div class="tabBar">
+                    <button class="tabBtn active" data-color-var="--test-color-4">Fundamentals</button>
+                    <button class="tabBtn" data-color-var="--test-color-5">Contrast Ratios</button>
+                    <button class="tabBtn" data-color-var="--test-color-5">Brand Psychology</button>
+                </div>
+
+                <h3 data-color-var="--test-color-5">Balancing Hues, Saturation, and Lightness</h3>
+                <p data-color-var="--test-color-5">
+                    Colors convey visual emotion and structure in user interfaces. When picking a brand base color, calculated lightness offsets prevent visual fatigue. A 60% neutral canvas allows 30% structural card surfaces to frame key content naturally.
+                </p>
+
+                <div class="calloutQuote" data-color-var="--test-color-2">
+                    <p data-color-var="--test-color-5">
+                        "Mathematical color relationships eliminate guesswork, ensuring that primary call-to-action buttons always capture attention."
+                    </p>
+                </div>
+
+                <p data-color-var="--test-color-5">
+                    By testing monochrome, complementary, analogous, and triadic schemes dynamically, UI systems ensure high visual interest while maintaining WCAG text clarity.
+                </p>
+            </section>
+
+            <!-- Image Grid Cards -->
+            <div class="sectionHeader">
+                <h3 data-color-var="--test-color-5">Color Scheme Modules</h3>
+            </div>
+
+            <section class="itemGrid">
+                <div class="gridCard" data-color-var="--test-color-3">
+                    <div class="cardMedia" data-color-var="--test-color-2">
+                        <img src="./static/assets/images/placeholder.png" alt="Module Image">
+                    </div>
+                    <div class="cardMeta">
+                        <h4 data-color-var="--test-color-5">Monochrome Harmony</h4>
+                        <p data-color-var="--test-color-5">Uses single-hue lightness variations for clean, unified interfaces.</p>
+                        <button class="actionBtn" data-color-var="--test-color-4">Explore</button>
+                    </div>
+                </div>
+
+                <div class="gridCard" data-color-var="--test-color-3">
+                    <div class="cardMedia" data-color-var="--test-color-2">
+                        <img src="./static/assets/images/placeholder.png" alt="Module Image">
+                    </div>
+                    <div class="cardMeta">
+                        <h4 data-color-var="--test-color-5">Complementary Contrast</h4>
+                        <p data-color-var="--test-color-5">Pairs opposite color wheel hues to produce high-impact CTA focus.</p>
+                        <button class="actionBtn" data-color-var="--test-color-4">Explore</button>
+                    </div>
+                </div>
+
+                <div class="gridCard" data-color-var="--test-color-3">
+                    <div class="cardMedia" data-color-var="--test-color-2">
+                        <img src="./static/assets/images/placeholder.png" alt="Module Image">
+                    </div>
+                    <div class="cardMeta">
+                        <h4 data-color-var="--test-color-5">Analogous Cohesion</h4>
+                        <p data-color-var="--test-color-5">Combines adjacent color wheel hues for comfortable visual flow.</p>
+                        <button class="actionBtn" data-color-var="--test-color-4">Explore</button>
+                    </div>
+                </div>
+
+                <div class="gridCard" data-color-var="--test-color-3">
+                    <div class="cardMedia" data-color-var="--test-color-2">
+                        <img src="./static/assets/images/placeholder.png" alt="Module Image">
+                    </div>
+                    <div class="cardMeta">
+                        <h4 data-color-var="--test-color-5">Triadic Vibrancy</h4>
+                        <p data-color-var="--test-color-5">Distributes 3 equidistant hues for rich multi-tone UI components.</p>
+                        <button class="actionBtn" data-color-var="--test-color-4">Explore</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Callout Footer Banner -->
+            <section class="placeholderCard ctaBanner" data-color-var="--test-color-3">
+                <div class="ctaText">
+                    <h3 data-color-var="--test-color-5">Test Palette Algorithms Live</h3>
+                    <p data-color-var="--test-color-5">Use the floating ColorWeb inspector tool to pick new seed colors and inspect exact RGB/HSL formats.</p>
+                </div>
+                <button class="actionBtn" data-color-var="--test-color-4">Interactive Inspector</button>
+            </section>
+
+            <footer id="pageFooter" class="placeholderCard" data-color-var="--test-color-3">
+                <p data-color-var="--test-color-5">© 2026 Web Design Color Theory Reference Guide • Built with Color.js</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dragPanel.js') }}"></script>
+</body>
+</html>

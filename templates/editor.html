@@ -1,0 +1,32 @@
+<div id="panelHead">ColorWeb</div>
+<div id="panelBody">
+    <div class="panelControls">
+        <input type="color" id="colorPicker" value="#2563eb"/>
+        <select id="stylePicker">
+            <option value="monochrome">Monochrome</option>
+            <option value="complementary">Complementary</option>
+            <option value="analogous">Analogous</option>
+            <option value="triadic">Triadic</option>
+        </select>
+        <button id="tryButton">Try</button>
+    </div>
+
+    <div id="recBox" class="recBox">
+        <span id="recText">Calculating math recommendation...</span>
+    </div>
+
+    <div class="panelInspector">
+        <div class="inspectorHeader">
+            <span>Palette Colors</span>
+            <select id="formatPicker">
+                <option value="hex">HEX</option>
+                <option value="rgb">RGB</option>
+                <option value="hsl">HSL</option>
+            </select>
+        </div>
+        <div id="paletteList"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/colorGen.js') }}"></script>
+<script src="{{ url_for('static', filename='js/editorSetup.js') }}"></script>
